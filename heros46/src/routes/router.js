@@ -7,6 +7,7 @@ import HeroList from '../views/heroes/List.vue';
 import WeaponList from '../views/weapons/List.vue';
 import EquipList from '../views/equips/List.vue';
 import HeroAdd from '../views/heroes/Add.vue';
+import HeroEdit from '../views/heroes/Edit.vue';
 
 //插件注册
 Vue.use(VueRouter);
@@ -21,7 +22,8 @@ const router = new VueRouter({
         {name: 'heroes',path:'/heroes',component:HeroList},
           {name: 'weapons',path:'/weapons',component:WeaponList},  
             {name: 'equips',path:'/equips',component:EquipList},
-            {name:'heroesAdd',path:'./heroes/heroesAdd',component:HeroAdd}
+            {name:'heroesAdd',path:'./heroes/heroesAdd',component:HeroAdd},
+            {name:'heroesEdit',path:'/heroes/edit:id',component:HeroEdit}
     ]
 });
 export default router;

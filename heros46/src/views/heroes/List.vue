@@ -20,9 +20,10 @@
                 <td>{{item.name}}</td>
                 <td>{{item.gender}}</td>
                 <td>
-                  <a href="edit.html">edit</a>
+                  <!-- <a href="edit.html">edit</a> -->
+                  <router-link :to="{name:'heroesEdit',params:{id:item.id}}" >Edit</router-link>
                   &nbsp;&nbsp;
-                  <a href="javascript:window.confirm('Are you sure?')">delete</a>
+                  <a  @click.prevent="handleDel(item.id)" href="javascript:window.confirm('Are you sure?')">delete</a>
                 </td>
               </tr>
             </tbody>
@@ -37,7 +38,8 @@ import axios from 'axios';
    export default{
      data(){
        return {
-         list:[]
+         list:[],
+         
        }
      },
      created(){
@@ -53,8 +55,29 @@ import axios from 'axios';
            const {status,data}=res;
            if(status==200){
              this.list = data;
+            
            }
          });
+       },
+       handleDel(id){
+         if(!confirm('确定删除吗?')){
+           return;
+         }
+         axios
+         .delete(`http://localhost:3000/heroes/${id}`)
+         .then((res)=>{
+           const{status,data}=res;
+           if(status==200){
+             this.loadData();
+            // this.list = data;
+           }else{
+             alert('删除失败');
+           }
+         })
+         .catch((err)=>{
+           console.log(err);
+           
+         })
        }
      }
    } ;
