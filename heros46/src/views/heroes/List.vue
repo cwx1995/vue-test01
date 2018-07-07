@@ -32,8 +32,8 @@
       </div>
 </template>
 <script>
-//导入axios模块
-import axios from 'axios';
+
+
 
    export default{
      data(){
@@ -48,8 +48,8 @@ import axios from 'axios';
      methods:{
        //加载英雄列表
        loadData(){
-         axios
-         .get('http://localhost:3000/heroes')
+         this.$http
+         .get('heroes')
          .then((res)=>{
           //  console.log(res);
            const {status,data}=res;
@@ -63,8 +63,8 @@ import axios from 'axios';
          if(!confirm('确定删除吗?')){
            return;
          }
-         axios
-         .delete(`http://localhost:3000/heroes/${id}`)
+         this.$http
+         .delete(`heroes/${id}`)
          .then((res)=>{
            const{status,data}=res;
            if(status==200){

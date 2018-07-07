@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-    import axios from 'axios';
+    
     export default{
         data(){
             return {
@@ -27,8 +27,8 @@
         },
         methods:{
             handleAdd(){
-                axios
-                .post('http://localhost:3000/heroes',this.formData)
+                this.$http
+                .post('heroes',this.formData)
                 .then((res)=>{
                     const{status,data}=res;
                     if(status==201){

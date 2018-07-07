@@ -14,7 +14,8 @@ Vue.use(VueRouter);
 
 //配置路由
 const router = new VueRouter({
-    linkExactActiveClass: 'active',
+    // linkExactActiveClass: 'active',
+    linkActiveClass:'active',
     //路由规则
     routes:[
         {name: 'home',path:'/',redirect:{name:'heroes'}},
@@ -22,7 +23,7 @@ const router = new VueRouter({
         {name: 'heroes',path:'/heroes',component:HeroList},
           {name: 'weapons',path:'/weapons',component:WeaponList},  
             {name: 'equips',path:'/equips',component:EquipList},
-            {name:'heroesAdd',path:'./heroes/heroesAdd',component:HeroAdd},
+            {name:'heroesAdd',path:'/heroes/heroesAdd',component:HeroAdd},
             {name:'heroesEdit',path:'/heroes/edit:id',component:HeroEdit}
     ]
 });

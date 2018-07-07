@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-    import axios from 'axios';
+    
     //显示当前要编辑的英雄
      //1.获取id、created()
      //2.发送请求获取数据
@@ -44,8 +44,8 @@
             //根据id  获取英雄对象 
 
            loadData(){
-            axios
-            .get(`http://localhost:3000/heroes/${this.heroId}`)
+            this.$http
+            .get(`heroes/${this.heroId}`)
             .then((res)=>{
                 if(res.status==200){
                     this.formData =res.data;
@@ -55,8 +55,8 @@
             })
             },
             handleEdit(){
-                axios
-                .put(`http://localhost:3000/heroes/${this.heroId}`,this.formData)
+                this.$http
+                .put(`heroes/${this.heroId}`,this.formData)
                 .then((res)=>{
                     if(res.status==200){
                         this.$router.push({name:'heroes'});
